@@ -1,0 +1,28 @@
+/* Manteniendo TODO tu estilo original, solo añado estos ajustes: */
+
+/* Video con tamaño fijo y centrado */
+.video-container {
+    max-width: 600px;
+    margin: 30px auto;
+    border: 1px solid #ff0033;
+    padding: 5px;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+}
+
+/* Pequeñas variaciones de tamaño para las imágenes (sin romper tu estilo) */
+.grid-item.size1 {
+    transform: scale(0.95);
+}
+.grid-item.size2 {
+    transform: scale(1);
+}
+.grid-item.size3 {
+    transform: scale(1.05);
+}
+
+/* Mejor distribución del grid */
+.symmet

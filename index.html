@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>69 reimaginaciones algorítmicas de comercio callejero</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+        body {
+            background-color: #000 !important;
+            color: #e0e0e0 !important;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        /* Estilos para el modal (se añaden sin afectar el diseño existente) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid #ff0033;
+            box-shadow: 0 0 20px rgba(255,0,51,0.5);
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ff0033;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Todo el resto del código permanece EXACTAMENTE igual -->
+    <div class="container">
+        <header>
+            <div class="title-box" style="border: 1px solid #ff0033; padding: 20px; margin-bottom: 30px; text-align: center;">
+                <h1 style="font-weight: 300; font-size: 2.5rem; letter-spacing: -1px; margin: 0; color: #ff0033; line-height: 1.2;">69 reimaginaciones<br>algorítmicas de<br>comercio callejero</h1>
+            </div>
+            <div class="description-box" style="border: 1px solid #ff0033; padding: 20px; margin-bottom: 30px; font-size: 0.95rem; color: #aaa;">
+                <p>Estas imágenes, generadas con inteligencia artificial a partir de un archivo visual de puestos callejeros de la CDMX, exploran cómo el urbanismo callejero mexicano puede reinventarse y repensarse dentro del marco de las nuevas tecnologías.</p>
+                <p>Esta aproximación ofrece una nueva forma de habitar y manifestar la existencia de estos espacios icónicos. El objetivo es reinterpretar estos lugares más allá de sus expresiones tradicionales y habilitarlos como espacios narrativos.</p>
+                <p>Esto convierte esos no-lugares –antes definidos por transacciones efímeras– en artefactos cargados de valor estético y significado cultural.</p>
+            </div>
+        </header>
+
+        <div class="video-container" style="border: 1px solid #ff0033; padding: 5px; max-width: 500px; margin: 20px auto;">
+            <video controls loop autoplay muted style="width: 100%; height: auto; display: block;">
+                <source src="assets/70.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <main class="image-grid" id="imageGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+            <!-- Las imágenes se insertarán aquí con JavaScript -->
+        </main>
+
+        <footer>
+            <div class="footer-box" style="border: 1px solid #ff0033; padding: 15px; text-align: center; font-size: 0.8rem; margin-top: 30px; color: #666;">
+                <p>Proyecto visual generado con inteligencia artificial · 2023</p>
+                <p>antimemoria_____ · <a href="https://instagram.com/antimemoria_____" target="_blank" style="color: #ff0033; text-decoration: none;">@antimemoria_____</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal para ver imágenes en detalle -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.getElementById('imageGrid');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.close');
+            
+            for (let i = 1; i <= 69; i++) {
+                const imgDiv = document.createElement('div');
+                imgDiv.style.border = '1px solid #333';
+                imgDiv.style.padding = '8px';
+                imgDiv.style.backgroundColor = '#1a1a1a';
+                imgDiv.style.transition = 'all 0.3s ease';
+                imgDiv.style.position = 'relative';
+                imgDiv.style.zIndex = '1';
+                
+                const img = document.createElement('img');
+                img.src = `assets/${i}.jpg`;
+                img.alt = `Reimaginación ${i}`;
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                img.style.display = 'block';
+                img.style.transition = 'transform 0.3s ease';
+                img.style.cursor = 'zoom-in';
+                
+                imgDiv.appendChild(img);
+                grid.appendChild(imgDiv);
+                
+                // Efecto hover
+                imgDiv.addEventListener('mouseenter', function() {
+                    this.style.borderColor = '#ff0033';
+                    this.style.transform = 'translateY(-5px)';
+                    this.querySelector('img').style.transform = 'scale(1.1)';
+                    this.style.zIndex = '10';
+                });
+                
+                imgDiv.addEventListener('mouseleave', function() {
+                    this.style.borderColor = '#333';
+                    this.style.transform = 'none';
+                    this.querySelector('img').style.transform = 'scale(1)';
+                    this.style.zIndex = '1';
+                });
+                
+                // Abrir modal al hacer clic
+                img.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                    modalImg.src = this.src;
+                    document.body.style.overflow = 'hidden'; // Evitar scroll
+                });
+            }
+            
+            // Cerrar modal
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Cerrar al hacer clic fuera de la imagen
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
